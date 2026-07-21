@@ -273,7 +273,7 @@ Batch pay is handled as **sequential single transfers** — one Monnify API call
 | Name | Role |
 |------|------|
 | Akintola Philip | Monnify integration, backend, error handling |
-| Teammate | AI logic, validation, frontend |
+| Samuel Akinpelu | AI logic, validation, frontend |
 
 ---
 
