@@ -167,8 +167,6 @@ PORT=3000
 npm start
 ```
 
-Open **http://localhost:3000**
-
 ### 4. Test modules standalone
 
 ```bash
