@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoPay — AI Payout Engine</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">APIConf x Monnify</p>
+        <h1>AutoPay</h1>
+        <p class="subtitle">AI proposes the split. A human confirms. Monnify pays out.</p>
+      </div>
+      <div class="hero-badge">Sandbox demo</div>
+    </header>
+
+    <main>
+      <section class="card" id="step-setup">
+        <div class="card-header">
+          <span class="step">1</span>
+          <div>
+            <h2>Define pool & rule</h2>
+            <p>Set the payout pool and choose a rule template.</p>
+          </div>
+        </div>
+
+        <form id="setup-form" class="grid">
+          <label>
+            Pool amount (NGN)
+            <input type="number" id="pool" min="1" step="0.01" value="100000" required />
+          </label>
+
+          <label>
+            Rule template
+            <select id="rule" required></select>
+          </label>
+
+          <div id="rule-params" class="rule-params"></div>
+
+          <label class="full">
+            Participants CSV
+            <input type="file" id="csv-file" accept=".csv,text/csv" required />
+          </label>
+
+          <p class="hint full">
+            CSV columns: <code>name, score, accountNumber, bankCode</code>.
+            Upload a Google Form export or use the sample below.
+          </p>
+
+          <div class="actions full">
+            <button type="button" id="load-sample" class="btn secondary">Load sample CSV</button>
+            <button type="submit" class="btn primary">Generate AI preview</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card hidden" id="step-preview">
+        <div class="card-header">
+          <span class="step">2</span>
+          <div>
+            <h2>Review allocation</h2>
+            <p id="preview-meta">Validate the AI proposal before any money moves.</p>
+          </div>
+        </div>
+
+        <div id="preview-warnings" class="alert-banner hidden"></div>
+
+        <div class="stats" id="preview-stats"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Amount (NGN)</th>
+                <th>Account</th>
+                <th>Bank</th>
+              </tr>
+            </thead>
+            <tbody id="preview-body"></tbody>
+          </table>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="back-to-setup" class="btn secondary">Back</button>
+          <button type="button" id="confirm-pay" class="btn primary">Confirm & pay</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="step-results">
+        <div class="card-header">
+          <span class="step">3</span>
+          <div>
+            <h2>Payout summary</h2>
+            <p>Transfer results from Monnify sandbox. Pending authorization means the transfer was created and is waiting for OTP approval.</p>
+          </div>
+        </div>
+
+        <div id="result-warnings" class="alert-banner hidden"></div>
+
+        <div class="stats" id="result-stats"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Reference / message</th>
+              </tr>
+            </thead>
+            <tbody id="result-body"></tbody>
+          </table>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="start-over" class="btn primary">Start over</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <div id="alert-banner" class="alert-banner hidden"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "autopay",
+  "version": "1.0.0",
+  "description": "AI-driven payout engine for APIConf x Monnify hackathon",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test:monnify": "node monnify.js",
+    "test:ai": "node ai.js"
+  },
+  "keywords": ["monnify", "payout", "gemini"],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
