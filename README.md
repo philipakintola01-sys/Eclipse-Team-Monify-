@@ -279,7 +279,6 @@ Batch pay is handled as **sequential single transfers** — one Monnify API call
 
 ## Status
 
-Built in ~24 hours for the **Monnify API Conf Lagos 2026 Developer Challenge**.
 
 - Sandbox only — not production-ready
 - Sequential single transfers (not Monnify bulk API)
